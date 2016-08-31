@@ -1,0 +1,23 @@
+extends ./layout.pug
+
+mixin text(slice)
+  div.text-section
+    != slice.value.asHtml(ctx.linkResolver)
+
+mixin gallery(slice)
+  div.gallery
+    each galleryImage in slice.value.toArray()
+      a(href=galleryImage.getImage("image").url, data-lightbox='image-'+galleryCount, data-title=galleryImage.getText('image-caption'))
+        div(style="background-image: url(" + galleryImage.getImage("image").url + ");")
+  - galleryCount++
+
+block body
+  -var galleryCount = 1
+  div#page-content
+    != pageContent.getStructuredText('article.title').asHtml(ctx.linkResolver)
+    for slice in pageContent.getSliceZone('article.body').slices
+      case slice.sliceType
+        when 'text'
+          +text(slice)
+        when 'image-gallery'
+          +gallery(slice)
