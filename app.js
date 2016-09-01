@@ -44,9 +44,13 @@ app.route('/:uid').get(function(req, res) {
   api(req, res).then(function(api) {
     return api.getByUID("article", uid);
   }).then(function(pageContent) {
-    res.render('index', {
-      pageContent: pageContent
-    });
+    if (pageContent === undefined) {
+      res.render('no-results');
+    } else {
+      res.render('index', {
+        pageContent: pageContent
+      });
+    }
   });
 });
 
@@ -54,7 +58,11 @@ app.route('/').get(function(req, res){
   api(req, res).then(function(api) {
     return api.query(prismic.Predicates.at("document.type", "article"));
   }).then(function(pageContent) {
-    return res.redirect("/"+pageContent.results[0].uid);
+    if (pageContent.results_size == 0) {
+      res.render('no-results');
+    } else {
+      return res.redirect("/"+pageContent.results[0].uid);
+    }
   });
 });
 

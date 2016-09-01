@@ -20,7 +20,14 @@ The project should now be up and running!
 
 #### Get started with prismic.io
 
-For more information about this project, check out the [How to Create an Image Gallery page](https://prismic.io/docs/examples/how-to-create-an-image-gallery#?lang=node). To learn more about how to get started wth prismic.io, you can check out our [Quickstart project](https://prismic.io/quickstart) or [explore the docs](https://prismic.io/docs).
+For more information about this project, check out the [How to Create an Image Gallery page](https://prismic.io/docs/examples/how-to-create-an-image-gallery#?lang=node). After following the instructions there, you can connect your own prismic repository to this project by replacing the repository url in your « prismic-configuration.js » with your-repo-name.prismic.io.
+
+```sh
+apiEndpoint: "http://your-repo-name.prismic.io/api",
+```
+#### Learn more about prismic.io
+
+To learn more about how to get started wth prismic.io, you can check out our [Quickstart project](https://prismic.io/quickstart) or [explore the docs](https://prismic.io/docs).
 
 #### Understand the JavaScript development kit
 

@@ -7,17 +7,25 @@ mixin text(slice)
 mixin gallery(slice)
   div.gallery
     each galleryImage in slice.value.toArray()
-      a(href=galleryImage.getImage("image").url, data-lightbox='image-'+galleryCount, data-title=galleryImage.getText('image-caption'))
-        div(style="background-image: url(" + galleryImage.getImage("image").url + ");")
+      if galleryImage.getImage("image")
+        - var caption = galleryImage.getText('image-caption') ? galleryImage.getText('image-caption') : ""
+        a(href=galleryImage.getImage("image").url, data-lightbox='image-'+galleryCount, data-title=caption)
+          div(style="background-image: url(" + galleryImage.getImage("image").url + ");")
   - galleryCount++
 
 block body
   -var galleryCount = 1
   div#page-content
-    != pageContent.getStructuredText('article.title').asHtml(ctx.linkResolver)
-    for slice in pageContent.getSliceZone('article.body').slices
-      case slice.sliceType
-        when 'text'
-          +text(slice)
-        when 'image-gallery'
-          +gallery(slice)
+    if pageContent.getStructuredText('article.title')
+      != pageContent.getStructuredText('article.title').asHtml(ctx.linkResolver)
+    else
+      h1 Enter a title for your article!
+    if pageContent.getSliceZone('article.body')
+      for slice in pageContent.getSliceZone('article.body').slices
+        case slice.sliceType
+          when 'text'
+            +text(slice)
+          when 'image-gallery'
+            +gallery(slice)
+    else
+      h2 Create some content for your article using slices!
