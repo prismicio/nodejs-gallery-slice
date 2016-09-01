@@ -1,4 +1,4 @@
-## Sample How To Create an Image Gallery Component Project
+## Sample How To Create an Image Gallery Project
 
 This is a [NodeJS](http://nodejs.org/) (using [express](http://expressjs.com/)) project that demonstrates what an article with image galleries using prismic.io might look like. It uses the prismic.io JavaScript development kit, and provides a few helpers to integrate with [express](http://expressjs.com/).
 
@@ -20,7 +20,7 @@ The project should now be up and running!
 
 #### Get started with prismic.io
 
-For more information about how to get started wth prismic.io you can check out our [Quickstart project](https://prismic.io/quickstart) or [explore the docs](https://prismic.io/docs).
+For more information about this project, check out the [How to Create an Image Gallery page](https://prismic.io/docs/examples/how-to-create-an-image-gallery#?lang=node). To learn more about how to get started wth prismic.io, you can check out our [Quickstart project](https://prismic.io/quickstart) or [explore the docs](https://prismic.io/docs).
 
 #### Understand the JavaScript development kit
 
